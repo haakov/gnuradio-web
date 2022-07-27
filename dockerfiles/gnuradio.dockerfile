@@ -115,9 +115,6 @@ RUN cd /opt/fftw-3.3.10 && \
     emconfigure ./configure --prefix=/build --host=wasm32 --with-slow-timer --enable-float && \
     emmake make -j6 install
 
-RUN     cd /opt/gnuradio && git checkout bb2f782e755fd08d03316a4cf43094c10ed7eb23 && \
-    cd /opt/gnuradio && git submodule update --init --recursive
-
 # patch GNU Radio
 ADD ./gnuradio.patch /opt/gnuradio/gnuradio.patch
 RUN cd /opt/gnuradio && git apply ./gnuradio.patch

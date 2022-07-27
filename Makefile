@@ -96,7 +96,7 @@ gnuradio: build-output/volk build-output/boost build-output/pyqt5 build-output/n
 	cp -r ./build-output/qwt ./.context/gnuradio/
 	docker-compose build gnuradio
 	rm -rf ./build-output/gnuradio
-	docker-compose run -u 1000:1000 gnuradio cp -r /build/base/wasm /build-output/gnuradio
+	docker-compose run -u ${UID}:${UID} gnuradio cp -r /build/base/wasm /build-output/gnuradio
 	mv build-output/gnuradio/lib build-output/gnuradio/_lib
 
 gnuradio-rebuild: gnuradio
@@ -105,7 +105,7 @@ gnuradio-rebuild: gnuradio
 	cp -r ./build-output/pyqt5/pyqt5-static ./.context/gnuradio-rebuild/
 	docker-compose build gnuradio-rebuild
 	rm -rf ./build-output/gnuradio
-	docker-compose run -u 1000:1000 gnuradio-rebuild cp -r /build/base/wasm /build-output/gnuradio
+	docker-compose run -u ${UID}:${UID} gnuradio-rebuild cp -r /build/base/wasm /build-output/gnuradio
 	mv build-output/gnuradio/lib build-output/gnuradio/_lib
 
 ./build/wasm:
@@ -121,7 +121,7 @@ webapp: gnuradio-rebuild
 
 	mkdir -p ./webapp
 
-	cd ~/git/gnuradio-web/grc-dev && find . -name "*.py" | xargs ../build-output/cpython/wasm/bin/python3.11-i386 -m compileall
+	cd ./grc-dev && find . -name "*.py" | xargs ../build-output/cpython/wasm/bin/python3.11-i386 -m compileall
 
 	cp ./cache_v2.json grc-dev/gnuradio/
 
@@ -146,7 +146,7 @@ webapp: gnuradio-rebuild
 	cp -r ./grc-dev/gnuradio ./build-output/gnuradio/lib/python3.11/site-packages/
 
 	cd build-output/gnuradio && \
-	$$EMSDK/upstream/emscripten/tools/file_packager.py \
+	/usr/lib/emscripten/tools/file_packager.py \
 	python.data --preload lib --no-node --js-output=python.data.js --lz4
 
 	cp ./build-output/gnuradio/python* ./webapp/

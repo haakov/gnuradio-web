@@ -367,3 +367,16 @@ index cfa0f91..8fb23c5 100644
  import pmt
 
 .
+diff --git a/gr-blocks/include/gnuradio/blocks/blockinterleaving.h b/gr-blocks/include/gnuradio/blocks/blockinterleaving.h
+index 9d4e0f249..df831fe5a 100644
+--- a/gr-blocks/include/gnuradio/blocks/blockinterleaving.h
++++ b/gr-blocks/include/gnuradio/blocks/blockinterleaving.h
+@@ -12,7 +12,7 @@
+ #define INCLUDED_GR_BLOCKS_BLOCKINTERLEAVING_H
+ 
+ #include <gnuradio/blocks/api.h>
+-
++#include <vector>
+ 
+ namespace gr {
+ namespace blocks {
