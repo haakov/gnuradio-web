@@ -11425,6 +11425,10 @@ function _emscripten_pause_main_loop() {
  Browser.mainLoop.pause();
 }
 
+function _emscripten_performance_now() {
+ return performance.now();
+}
+
 function _emscripten_proxy_to_main_thread_js(index, sync) {
  var numCallArgs = arguments.length - 2;
  var outerArgs = arguments;
@@ -13557,6 +13561,7 @@ var asmLibraryArg = {
  "emscripten_memcpy_big": _emscripten_memcpy_big,
  "emscripten_num_logical_cores": _emscripten_num_logical_cores,
  "emscripten_pause_main_loop": _emscripten_pause_main_loop,
+ "emscripten_performance_now": _emscripten_performance_now,
  "emscripten_receive_on_main_thread_js": _emscripten_receive_on_main_thread_js,
  "emscripten_resize_heap": _emscripten_resize_heap,
  "emscripten_resume_main_loop": _emscripten_resume_main_loop,
@@ -13742,9 +13747,9 @@ var stackRestore = Module["stackRestore"] = createExportWrapper("stackRestore");
 
 var stackAlloc = Module["stackAlloc"] = createExportWrapper("stackAlloc");
 
-var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11394400;
+var __emscripten_main_thread_futex = Module["__emscripten_main_thread_futex"] = 11399996;
 
-var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 10555736;
+var __emscripten_allow_main_runtime_queued_calls = Module["__emscripten_allow_main_runtime_queued_calls"] = 10563096;
 
 function invoke_iiiii(index, a1, a2, a3, a4) {
  var sp = stackSave();

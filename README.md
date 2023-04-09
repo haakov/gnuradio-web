@@ -37,7 +37,7 @@ The repo includes prebuilt binaries, but if you like watching cross-compilation 
 
 1. install `docker`, `docker-compose`, and `emsdk`
 
-2. run `make base && make webapp` in the repository root
+2. run `make base && make cpython && make webapp` in the repository root
 
    (I've only tested this on an Ubuntu 20.04 x86_64 host. It probably works in other environments but YMMV.)
 

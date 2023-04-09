@@ -121,7 +121,7 @@ webapp: gnuradio-rebuild
 
 	mkdir -p ./webapp
 
-	cd ./grc-dev && find . -name "*.py" | xargs ../build-output/cpython/wasm/bin/python3.11-i386 -m compileall
+	cd ./grc-dev && find . -name "*.py" | xargs ../build-output/cpython/wasm/bin/python3 -m compileall
 
 	cp ./cache_v2.json grc-dev/gnuradio/
 
